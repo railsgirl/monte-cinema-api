@@ -10,7 +10,7 @@ class CinemaHallsController < ApplicationController
     if @cinema_hall.save
       render json: @cinema_hall
     else
-      render error: { error: 'Unable to create Cinema Hall' }, status: 400
+      render json: { error: 'Unable to create Cinema Hall' }, status: 400
     end
   end
 
