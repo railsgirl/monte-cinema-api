@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_20_123120) do
+ActiveRecord::Schema.define(version: 2021_05_25_200421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,4 +22,64 @@ ActiveRecord::Schema.define(version: 2021_05_20_123120) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.integer "age"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.integer "duration"
+    t.string "genre"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "seance_id", null: false
+    t.bigint "client_id", null: false
+    t.bigint "ticket_desk_id", null: false
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_reservations_on_client_id"
+    t.index ["seance_id"], name: "index_reservations_on_seance_id"
+    t.index ["ticket_desk_id"], name: "index_reservations_on_ticket_desk_id"
+  end
+
+  create_table "seances", force: :cascade do |t|
+    t.date "date"
+    t.time "time"
+    t.bigint "movie_id", null: false
+    t.bigint "cinema_hall_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cinema_hall_id"], name: "index_seances_on_cinema_hall_id"
+    t.index ["movie_id"], name: "index_seances_on_movie_id"
+  end
+
+  create_table "ticket_desks", force: :cascade do |t|
+    t.string "place"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.integer "price"
+    t.string "tariff"
+    t.bigint "reservation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reservation_id"], name: "index_tickets_on_reservation_id"
+  end
+
+  add_foreign_key "reservations", "clients"
+  add_foreign_key "reservations", "seances"
+  add_foreign_key "reservations", "ticket_desks"
+  add_foreign_key "seances", "cinema_halls"
+  add_foreign_key "seances", "movies"
+  add_foreign_key "tickets", "reservations"
 end
