@@ -21,7 +21,7 @@ class MoviesController < ApplicationController
   end
 
   def update
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find_by(id: params[:id])
     if @movie
       @movie.update(movie_params)
       render json: { message: "Movie successfully updated!" }, status: 200
@@ -31,7 +31,7 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find_by(id: params[:id])
     if @movie
       @movie.destroy
       render json: { message: "Movie successfully deleted!" }, status: 200
