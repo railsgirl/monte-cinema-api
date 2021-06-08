@@ -14,7 +14,7 @@ class SeancesController < ApplicationController
     @seance = Seance.new(seance_params)
 
     if @seance.save
-      render json: @seance, status: :created, location: @seance
+      render json: @seance, status: :created
     else
       render json: @seance.errors, status: :unprocessable_entity
     end
@@ -35,6 +35,6 @@ class SeancesController < ApplicationController
   private
 
   def seance_params
-    params.require(:seance).permit(:date, :time)
+    params.require(:seance).permit(:date, :time, :movie_id, :cinema_hall_id)
   end
 end
