@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Seances", type: :request do
-  let!(:seance) { Seance.create(date: 2021-06-01, time: Time.now) }
+  let!(:seance) { Seance.create(start_time: Time.now) }
 
   describe "GET /seances" do
 
@@ -22,7 +22,7 @@ RSpec.describe "Seances", type: :request do
   describe "POST /seances" do
 
     it "works and returns status 201" do
-      post("/seances", params: { seance: {  date: 2021-06-01, time: Time.now } } )
+      post("/seances", params: { seance: {  start_time: Time.now } } )
       expect(response.status).to eq(201)
     end
   end
@@ -30,7 +30,7 @@ RSpec.describe "Seances", type: :request do
   describe "PUT /seances/:id" do
 
     it "works and returns status 200" do
-      put("/seances/#{seance.id}", params: { seance: { id: seance.id, date: 2021-06-15 } })
+      put("/seances/#{seance.id}", params: { seance: { id: seance.id, start_time: Time.current + 1.hour } })
       expect(response.status).to eq(200)
     end
   end
