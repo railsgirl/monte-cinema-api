@@ -10,11 +10,12 @@ class ReservationsController < ApplicationController
     render json: @reservation
   end
 
-  def create
-    @reservation = Reservation.new(reservation_params)
+  def create_offline
+    @ticket_desk = TicketDesk.find(params[:ticket_desk_id])
+    @reservation = @ticket_desk.reservations.create(reservation_params)
 
     if @reservation.save
-      render json: @reservation, status: :created, location: @reservation
+      render json: @reservation, status: :created
     else
       render json: @reservation.errors, status: :unprocessable_entity
     end
@@ -35,7 +36,7 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:status)
+    params.require(:reservation).permit(:status, :seance_id, :client_id)
   end
 
 end
