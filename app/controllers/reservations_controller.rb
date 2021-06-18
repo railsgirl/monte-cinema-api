@@ -21,6 +21,17 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def create_online
+    @ticket_desk = TicketDesk.find(params[:ticket_desk_id])
+    @reservation = @ticket_desk.reservations.create(reservation_params)
+
+    if @reservation.save
+      render json: @reservation, status: :created
+    else
+      render json: @reservation.errors, status: :unprocessable_entity
+    end
+  end
+
   def update
     if @reservation.update(reservation_params)
       render json: @reservation
