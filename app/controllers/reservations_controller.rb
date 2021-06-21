@@ -47,7 +47,7 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:status, :seance_id, :client_id)
+    params.require(:reservation).permit(:status, :seance_id, :client_id, tickets: %i[price tariff])
   end
 
 end
