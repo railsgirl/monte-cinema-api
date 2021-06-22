@@ -35,6 +35,6 @@ class SeancesController < ApplicationController
   private
 
   def seance_params
-    params.require(:seance).permit(:date, :time, :movie_id, :cinema_hall_id)
+    params.require(:seance).permit(:start_time, :movie_id, :cinema_hall_id)
   end
 end
