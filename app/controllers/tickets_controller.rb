@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
 
-  def show
+  def index
     @reservation = Reservation.find(params[:reservation_id])
     render json: @reservation.tickets
   end
