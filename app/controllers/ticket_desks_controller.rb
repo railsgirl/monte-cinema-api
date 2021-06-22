@@ -35,7 +35,7 @@ class TicketDesksController < ApplicationController
   private
 
   def ticket_desk_params
-    params.require(:ticket_desk).permit(:place)
+    params.require(:ticket_desk).permit(:online)
   end
 
 end
