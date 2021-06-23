@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Reservation < ApplicationRecord
-  STATUSES = ["booked", "paid", "cancelled"]
-  
+  STATUSES = %w[booked paid cancelled].freeze
+
   belongs_to :seance
   belongs_to :client
   belongs_to :ticket_desk
@@ -9,8 +11,6 @@ class Reservation < ApplicationRecord
   validate :has_valid_status
 
   def has_valid_status
-    if STATUSES.exclude?(status)
-      errors.add(:status, "invalid status")
-    end
+    errors.add(:status, 'invalid status') if STATUSES.exclude?(status)
   end
 end

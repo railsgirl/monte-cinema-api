@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 cinema_hall_1 = CinemaHall.create(
   name: 'cinema hall 1',
   seats: 200
@@ -24,45 +26,45 @@ cinema_hall_5 = CinemaHall.create(
 )
 
 movie_1 = Movie.create(
-  title: "Titanic",
+  title: 'Titanic',
   duration: 128,
-  genre: "drama"
+  genre: 'drama'
 )
 
 movie_2 = Movie.create(
-  title: "Titanic II",
+  title: 'Titanic II',
   duration: 134,
-  genre: "drama"
+  genre: 'drama'
 )
 
 movie_3 = Movie.create(
-  title: "Bridget Jones 3",
+  title: 'Bridget Jones 3',
   duration: 95,
-  genre: "comedy"
+  genre: 'comedy'
 )
 
 movie_4 = Movie.create(
-  title: "Pretty Woman",
+  title: 'Pretty Woman',
   duration: 105,
-  genre: "comedy"
+  genre: 'comedy'
 )
 
 movie_5 = Movie.create(
-  title: "Notting Hill",
+  title: 'Notting Hill',
   duration: 85,
-  genre: "romance"
+  genre: 'romance'
 )
 
 movie_6 = Movie.create(
-  title: "Inception",
+  title: 'Inception',
   duration: 120,
-  genre: "action"
+  genre: 'action'
 )
 
 movie_7 = Movie.create(
-  title: "Matrix",
+  title: 'Matrix',
   duration: 115,
-  genre: "science fiction"
+  genre: 'science fiction'
 )
 
 seance_1 = Seance.create(
@@ -86,7 +88,7 @@ seance_3 = Seance.create(
 seance_4 = Seance.create(
   movie: movie_3,
   cinema_hall: cinema_hall_4,
-  start_time: Time.new(2021, 6, 27, 21, 00)
+  start_time: Time.new(2021, 6, 27, 21, 0o0)
 )
 
 seance_5 = Seance.create(
@@ -96,20 +98,20 @@ seance_5 = Seance.create(
 )
 
 client_1 = Client.create(
-  name: "Jan Kowalski",
-  email: "jan@domain.com",
+  name: 'Jan Kowalski',
+  email: 'jan@domain.com',
   age: 25
 )
 
 client_2 = Client.create(
-  name: "John Smith",
-  email: "john@domain.com",
+  name: 'John Smith',
+  email: 'john@domain.com',
   age: 38
 )
 
 client_3 = Client.create(
-  name: "Sarah Jones",
-  email: "sarah@domain.com",
+  name: 'Sarah Jones',
+  email: 'sarah@domain.com',
   age: 32
 )
 
@@ -137,76 +139,76 @@ reservation_1 = Reservation.create(
   seance: seance_2,
   client: client_1,
   ticket_desk: ticket_desk_online,
-  status: "booked"
+  status: 'booked'
 )
 
 reservation_2 = Reservation.create(
   seance: seance_1,
   client: client_2,
   ticket_desk: ticket_desk_online,
-  status: "paid"
+  status: 'paid'
 )
 
 reservation_3 = Reservation.create(
   seance: seance_3,
   client: client_3,
   ticket_desk: ticket_desk_online,
-  status: "booked"
+  status: 'booked'
 )
 
 reservation_4 = Reservation.create(
   seance: seance_4,
   client: client_1,
   ticket_desk: ticket_desk_online,
-  status: "cancelled"
+  status: 'cancelled'
 )
 
 reservation_5 = Reservation.create(
   seance: seance_5,
   client: client_3,
   ticket_desk: ticket_desk_offline_1,
-  status: "paid"
+  status: 'paid'
 )
 
 reservation_6 = Reservation.create(
   seance: seance_4,
   client: client_1,
   ticket_desk: ticket_desk_offline_2,
-  status: "paid"
+  status: 'paid'
 )
 
 ticket_1 = Ticket.create(
   price: 20,
-  tariff: "regular",
+  tariff: 'regular',
   reservation: reservation_1
 )
 
 ticket_2 = Ticket.create(
   price: 20,
-  tariff: "regular",
+  tariff: 'regular',
   reservation: reservation_2
 )
 
 ticket_3 = Ticket.create(
   price: 20,
-  tariff: "regular",
+  tariff: 'regular',
   reservation: reservation_3
 )
 
 ticket_4 = Ticket.create(
   price: 15,
-  tariff: "reduced",
+  tariff: 'reduced',
   reservation: reservation_4
 )
 
 ticket_5 = Ticket.create(
   price: 15,
-  tariff: "reduced",
+  tariff: 'reduced',
   reservation: reservation_5
 )
 
 ticket_6 = Ticket.create(
   price: 15,
-  tariff: "reduced",
+  tariff: 'reduced',
   reservation: reservation_6
 )

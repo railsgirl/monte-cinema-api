@@ -1,5 +1,6 @@
-class CinemaHallsController < ApplicationController
+# frozen_string_literal: true
 
+class CinemaHallsController < ApplicationController
   def index
     @cinema_halls = CinemaHall.all
     render json: @cinema_halls
@@ -18,9 +19,9 @@ class CinemaHallsController < ApplicationController
     @cinema_hall = CinemaHall.find(params[:id])
     if @cinema_hall
       @cinema_hall.update(cinema_hall_params)
-      render json: { message: "Cinema Hall successfully updated!" }, status: 200
+      render json: { message: 'Cinema Hall successfully updated!' }, status: 200
     else
-      render json: { error: "Unable to update Cinema Hall"}, status: 400
+      render json: { error: 'Unable to update Cinema Hall' }, status: 400
     end
   end
 
@@ -28,9 +29,9 @@ class CinemaHallsController < ApplicationController
     @cinema_hall = CinemaHall.find(params[:id])
     if @cinema_hall
       @cinema_hall.destroy
-      render json: { message: "Cinema Hall successfully deleted!" }, status: 200
+      render json: { message: 'Cinema Hall successfully deleted!' }, status: 200
     else
-      render json: { error: "Unable to delete Cinema Hall"}, status: 400
+      render json: { error: 'Unable to delete Cinema Hall' }, status: 400
     end
   end
 
@@ -39,5 +40,4 @@ class CinemaHallsController < ApplicationController
   def cinema_hall_params
     params.require(:cinema_hall).permit(:name, :seats)
   end
-
 end

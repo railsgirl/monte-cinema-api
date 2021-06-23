@@ -1,5 +1,6 @@
-class ReservationsController < ApplicationController
+# frozen_string_literal: true
 
+class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
 
@@ -49,5 +50,4 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.require(:reservation).permit(:status, :seance_id, :client_id, tickets: %i[price tariff])
   end
-
 end
