@@ -1,5 +1,6 @@
-class SeancesController < ApplicationController
+# frozen_string_literal: true
 
+class SeancesController < ApplicationController
   def index
     @seances = Seance.all
 

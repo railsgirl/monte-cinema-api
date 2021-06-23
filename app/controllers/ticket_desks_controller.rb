@@ -1,5 +1,6 @@
-class TicketDesksController < ApplicationController
+# frozen_string_literal: true
 
+class TicketDesksController < ApplicationController
   def index
     @ticket_desks = TicketDesk.all
 
@@ -37,5 +38,4 @@ class TicketDesksController < ApplicationController
   def ticket_desk_params
     params.require(:ticket_desk).permit(:online)
   end
-
 end
